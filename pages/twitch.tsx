@@ -20,9 +20,12 @@ export default function Twitch(){
         console.log(id)
     }
     return (
-        <div className="mx-10">
-            <SearchInput onChange={handleOnChange} searchId={getId} q={''}/>
-            <Result id={id}/>
+        <div className="flex flex-col items-center text-3xl font-bold p-8">
+            <h1>TWITCH ID LOOKUP</h1>
+            <div className="m-16">
+                <SearchInput onChange={handleOnChange} searchId={getId} q={''} placeholder="twitch username"/>
+                <Result id={id}/>
+            </div>
         </div>
     )
 }
