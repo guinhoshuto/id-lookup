@@ -18,12 +18,12 @@ export default function SearchInput(props: InputProps){
                     type="text" 
                     onChange={(e: any) => handleOnChange(e.target.value)}
                     placeholder={props.placeholder}
-                    className="h-16 px-8"
+                    className="h-20 px-8 rounded"
                 />
                 {/* <input type="submit" value="Get Id" /> */}
                 <button 
                     onClick={() => props.searchId(props.q)}
-                    className="block p-2 bg-white border-solid border-1 text-sky-500"
+                    className="block px-8 bg-ok text-white border-solid border-1 h-20 rounded"
                 >
                     Get Id
                 </button>
