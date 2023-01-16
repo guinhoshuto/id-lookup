@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useState } from "react";
+import TagManager from 'react-gtm-module';
 import Result from "../components/result"
 import SearchInput from "../components/searchInput";
 
@@ -15,6 +16,12 @@ export default function Twitch(){
     async function getId(){
         console.log('buscar: ', query)
         const idRequest = await axios.post(`http://localhost:3000/api/twitch`, {username: query})
+        TagManager.dataLayer({
+            dataLayer: {
+                event: 'twitchSearchID',
+                username: query   
+            }
+        })
         console.log(idRequest)
         setId(idRequest.data.id)
         console.log(id)
