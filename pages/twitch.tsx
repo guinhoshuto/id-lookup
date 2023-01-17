@@ -15,13 +15,13 @@ export default function Twitch(){
 
     async function getId(){
         console.log('buscar: ', query)
-        const idRequest = await axios.post(`https://id-lookup.nichijou.club/api/twitch`, {username: query})
         TagManager.dataLayer({
             dataLayer: {
                 event: 'twitchSearchID',
                 username: query   
             }
         })
+        const idRequest = await axios.post(`http://localhost:3000/api/twitch`, {username: query})
         console.log(idRequest)
         setId(idRequest.data.id)
         console.log(id)
