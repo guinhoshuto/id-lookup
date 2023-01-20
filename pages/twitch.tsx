@@ -21,7 +21,7 @@ export default function Twitch(){
                 username: query   
             }
         })
-        const idRequest = await axios.post(`https://id-lookup.vercel.app/api/twitch`, {username: query})
+        const idRequest = await axios.post(`https://id-lookup.nichijou.club/api/twitch`, {username: query})
         console.log(idRequest)
         setId(idRequest.data.id)
         console.log(id)
