@@ -2,6 +2,7 @@
 import axios from 'axios'
 import { useState } from "react";
 import TagManager from 'react-gtm-module';
+import Header from '../components/Header';
 import Result from "../components/result"
 import SearchInput from "../components/searchInput";
 
@@ -28,11 +29,14 @@ export default function Instagram(){
         console.log(id)
     }
     return (
-        <div className="flex flex-col items-center text-3xl font-bold p-8">
-            <h1>INSTAGRAM ID LOOKUP</h1>
-            <div className="m-16">
-                <SearchInput onChange={handleOnChange} searchId={getId} q={''} placeholder="instagram username"/>
-                <Result id={id}/>
+        <div>
+            <Header />
+            <div className="flex flex-col items-center text-3xl font-bold p-8">
+                <h1>INSTAGRAM ID LOOKUP</h1>
+                <div className="m-16">
+                    <SearchInput onChange={handleOnChange} searchId={getId} q={''} placeholder="instagram username"/>
+                    <Result id={id}/>
+                </div>
             </div>
         </div>
     )
