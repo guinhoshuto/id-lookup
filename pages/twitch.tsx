@@ -22,9 +22,7 @@ export default function Twitch(){
                 username: query   
             }
         })
-        const idRequest = await axios.post('/api/twitch', {
-            username: query
-        })
+        const idRequest = await axios.get(`/api/twitch/${query}`)
         console.log(idRequest)
         setId(idRequest.data.id)
         console.log(id)
