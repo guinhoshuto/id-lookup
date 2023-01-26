@@ -20,7 +20,7 @@ export default async function handler(
       res.status(500).json(e)
     }
   } else {
-    res.status(405).json({ msg: 'VISH' })
+    res.status(405).json({ 'method': req.method })
   }
   
 }
