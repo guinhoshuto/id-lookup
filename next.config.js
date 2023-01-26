@@ -2,14 +2,14 @@ const { withSentryConfig } = require('@sentry/nextjs');
 
 const moduleExports = {
   reactStrictMode: true,
-  async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: 'https://api.feras.club/:path*',
-      },
-    ]
-  },
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: '/api/:path*',
+  //       destination: 'https://id-lookup.nichijou.club/:path*',
+  //     },
+  //   ]
+  // },
 
   sentry: {
     hideSourceMaps: true,
