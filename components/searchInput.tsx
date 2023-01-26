@@ -23,7 +23,7 @@ export default function SearchInput(props: InputProps){
                 {/* <input type="submit" value="Get Id" /> */}
                 <button 
                     onClick={() => props.searchId(props.q)}
-                    className="block px-8 bg-ok text-white border-solid border-1 h-20 rounded"
+                    className="block px-8 bg-ok text-white border-solid border-1 h-20 rounded hover:bg-ok-hover"
                 >
                     Get Id
                 </button>

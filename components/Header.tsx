@@ -2,7 +2,7 @@ import Link from "next/link"
 
 export default function Header(){
     return(
-        <div className="w-full h-8 flex justify-between py-8 px-12 mb-8 ">
+        <div className="w-full h-8 flex justify-between py-8 px-12 mb-8">
             <div>
                 ID LOOKUP
             </div>
