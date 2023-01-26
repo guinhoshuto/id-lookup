@@ -11,8 +11,12 @@ export default async function handler(
   res: NextApiResponse<any>
 ) {
   if(req.method === 'POST'){
-    const response = await axios.get(`${url}?fields=business_discovery.username(${req.body.params})%7Bid%2Cprofile_picture_url%2Cname%2Cwebsite%2Cfollowers_count%2Cfollows_count%2Cmedia_count%2Cmedia.fields(like_count%2Ccomments_count%2Cmedia_url%2Cmedia_type%2Ctimestamp)%7D&access_token=${process.env.FACEBOOK_TOKEN}`)
-    res.status(200).json(response.data)
+    try{ 
+      const response = await axios.get(`${url}?fields=business_discovery.username(${req.body.params})%7Bid%2Cprofile_picture_url%2Cname%2Cwebsite%2Cfollowers_count%2Cfollows_count%2Cmedia_count%2Cmedia.fields(like_count%2Ccomments_count%2Cmedia_url%2Cmedia_type%2Ctimestamp)%7D&access_token=${process.env.FACEBOOK_TOKEN}`)
+      res.status(200).json(response.data)
+    } catch(e){
+      res.status(500).json(e)
+    }
   } else {
     res.status(405).json({ msg: 'VISH' })
   }
