@@ -27,7 +27,7 @@ export default function Instagram(){
                 username: query   
             }
         })
-        const idRequest = await axios.post('/api/instagram', {
+        const idRequest = await axios.get('/api/instagram', {
             username: query
         })
         console.log(idRequest)
