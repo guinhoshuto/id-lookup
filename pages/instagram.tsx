@@ -1,10 +1,14 @@
-
-import axios from 'axios'
+// import { api } from "../lib/axios";
+import axios from "axios";
 import { useState } from "react";
 import TagManager from 'react-gtm-module';
 import Header from '../components/Header';
 import Result from "../components/result"
 import SearchInput from "../components/searchInput";
+
+// export let api = axios.create({
+//     baseURL: 'https://id-lookup.nichijou.club'
+// })
 
 export default function Instagram(){
     const [id, setId] = useState<string>('');
@@ -23,7 +27,9 @@ export default function Instagram(){
                 username: query   
             }
         })
-        const idRequest = await axios.post(`/api/instagram`, {username: query})
+        const idRequest = await axios.post('/api/instagram', {
+            username: query
+        })
         console.log(idRequest)
         setId(idRequest.data.id)
         console.log(id)
