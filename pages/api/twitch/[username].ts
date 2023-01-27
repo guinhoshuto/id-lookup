@@ -10,6 +10,8 @@ export let twitchReq = axios.create({
   },
 }) 
 
+
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
@@ -17,10 +19,20 @@ export default async function handler(
   const query = req.query
   console.log(query)
   try {
-    const username = await twitchReq.get(url+query.username)
-    console.log(username.data.data[0])
-    console.log(url+query.username)
-    res.status(200).json( username.data.data[0])
+    const username = await fetch(url+query.username, {
+      method: 'GET',
+      headers: {
+        Authorization: process.env.TWITCH_TOKEN!,
+        'Client-Id': process.env.TWITCH_CLIENT_ID!
+      },
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      console.log(url+query.username)
+      res.status(200).json(data.data[0])
+
+    })
   } catch(e){
     console.log(e)
     res.status(500).json({'msg': e})
