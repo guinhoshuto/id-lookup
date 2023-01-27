@@ -22,10 +22,12 @@ export default function Twitch(){
                 username: query   
             }
         })
-        const idRequest = await axios.get(`/api/twitch/${query}`)
-        console.log(idRequest)
-        setId(idRequest.data.id)
-        console.log(id)
+        await fetch(`/api/twitch/${query}`)
+        .then(response => response.json())
+        .then(data => {
+            setId(data.id)
+            console.log(id)
+        })
     }
     return (
         <div>

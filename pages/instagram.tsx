@@ -27,10 +27,12 @@ export default function Instagram(){
                 username: query   
             }
         })
-        const idRequest = await axios.get(`/api/instagram/${query}`)
-        console.log(idRequest)
-        setId(idRequest.data.id)
-        console.log(id)
+        await fetch(`/api/instagram/${query}`)
+        .then(response => response.json())
+        .then(data => {
+            setId(data.id)
+            console.log(id)
+        })
     }
     return (
         <div>
