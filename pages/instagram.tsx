@@ -21,12 +21,12 @@ export default function Instagram(){
 
     async function getId(){
         console.log('buscar: ', query)
-        TagManager.dataLayer({
-            dataLayer: {
-                event: 'instagramSearchID',
-                username: query   
-            }
-        })
+        // TagManager.dataLayer({
+        //     dataLayer: {
+        //         event: 'instagramSearchID',
+        //         username: query   
+        //     }
+        // })
         TagManager.dataLayer({
             dataLayer: {
                 event: 'purchase',
