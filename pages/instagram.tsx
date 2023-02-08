@@ -39,6 +39,7 @@ export default function Instagram(){
             <Header />
             <div className="flex flex-col items-center text-3xl font-bold p-8">
                 <h1>INSTAGRAM ID LOOKUP</h1>
+                <h2 className="text-[#A8A29E] text-base">Find any Instagram Account ID by username</h2>
                 <div className="m-16">
                     <SearchInput onChange={handleOnChange} searchId={getId} q={''} placeholder="instagram username"/>
                     <Result id={id}/>
