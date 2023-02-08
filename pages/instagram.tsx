@@ -27,6 +27,21 @@ export default function Instagram(){
                 username: query   
             }
         })
+        TagManager.dataLayer({
+            dataLayer: {
+                event: 'purchase',
+                ecommerce: {
+                    value: 0.01,
+                    currency: 'BRL',
+                    items: [{
+                        item_name: 'plano a',
+                        currency: 'BRL',
+                        price: 0.01,
+                        quantity: 1
+                    }]
+                }
+            }
+        })
         await fetch(`/api/instagram/${query}`)
         .then(response => response.json())
         .then(data => {
