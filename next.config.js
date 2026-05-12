@@ -1,23 +1,18 @@
-const { withSentryConfig } = require('@sentry/nextjs');
-
 const moduleExports = {
-  // reactStrictMode: true,
-  // async rewrites() {
-  //   return [
-  //     {
-  //       source: '/api/:path*',
-  //       destination: 'https://id-lookup.nichijou.club/api/:path*',
-  //     },
-  //   ]
-  // },
-
-  sentry: {
-    hideSourceMaps: true,
-  },
+  reactStrictMode: true,
 };
 
-const sentryWebpackPluginOptions = {
-  silent: true, // Suppresses all logs
-};
+const shouldUseSentry =
+  Boolean(process.env.SENTRY_AUTH_TOKEN) &&
+  Boolean(process.env.SENTRY_ORG) &&
+  Boolean(process.env.SENTRY_PROJECT);
 
-module.exports = withSentryConfig(moduleExports, sentryWebpackPluginOptions);
+if (shouldUseSentry) {
+  const { withSentryConfig } = require('@sentry/nextjs');
+
+  module.exports = withSentryConfig(moduleExports, {
+    silent: true,
+  });
+} else {
+  module.exports = moduleExports;
+}

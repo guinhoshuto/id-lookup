@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ID Lookup
 
-## Getting Started
+Next.js utility for finding Twitch user IDs and supported Instagram business IDs by username.
 
-First, run the development server:
+## What changed
+
+- The homepage is now the lookup tool itself: choose a platform, enter a username and copy the returned ID.
+- Dedicated Twitch and Instagram lookup pages stay available for SEO and direct links.
+- AdSense-ready ad slots are available for sidebar, rectangle and horizontal placements.
+- API responses handle expired credentials, invalid usernames, rate limits and unsupported Instagram lookups.
+- GTM, AdSense and Sentry are optional through environment variables.
+
+## Local setup
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Copy `.env.example` values into `.env.local` and fill the credentials you actually want to use.
+
+3. Start the app:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Production build check:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm run start
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Environment variables
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Public
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- `NEXT_PUBLIC_SITE_URL`
+- `NEXT_PUBLIC_GTM_ID`
+- `NEXT_PUBLIC_ADSENSE_CLIENT_ID`
+- `NEXT_PUBLIC_ADSENSE_HOME_SLOT`
+- `NEXT_PUBLIC_ADSENSE_TWITCH_SLOT`
+- `NEXT_PUBLIC_ADSENSE_INSTAGRAM_SLOT`
+- `NEXT_PUBLIC_ADSENSE_RECTANGLE_SLOT`
+- `NEXT_PUBLIC_ADSENSE_HORIZONTAL_SLOT`
 
-## Learn More
+### Server
 
-To learn more about Next.js, take a look at the following resources:
+- `TWITCH_CLIENT_ID`
+- `TWITCH_TOKEN`
+- `FACEBOOK_ID`
+- `FACEBOOK_TOKEN`
+- `FACEBOOK_GRAPH_VERSION`
+- `SENTRY_AUTH_TOKEN`
+- `SENTRY_ORG`
+- `SENTRY_PROJECT`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Platform notes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Twitch uses the official Helix user lookup and expects a valid app token plus Client ID.
+- Instagram uses Meta Business Discovery, so account coverage depends on permissions and eligible professional accounts.
 
-## Deploy on Vercel
+## AdSense setup
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The UI includes neutral ad containers and only loads AdSense when `NEXT_PUBLIC_ADSENSE_CLIENT_ID` and the matching slot ID are configured. In production, unconfigured ad slots are hidden.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Pending follow-up
+
+See [`tasks.md`](./tasks.md) for the remaining production checklist.
